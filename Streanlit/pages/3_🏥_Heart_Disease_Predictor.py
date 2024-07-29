@@ -5,6 +5,9 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 import plotly.graph_objects as go
 from PIL import Image
+import gzip
+import requests
+import io
 
 
 st.image("https://streamlit.io/images/brand/streamlit-mark-color.png", width=100)  # Adjust width as needed
@@ -193,8 +196,23 @@ st.write(df.head(1))
 # Extracting first row
 df = df[:1]
 
-# Loading the random forest model
-rf = pickle.load(open("C:/Users/hoybr/sessionworkspace/Heart_disease/pages/heart_rf.pkl", "rb"))
+
+# Function to download the model file from a URL
+@st.cache_data
+def download_model(url):
+    response = requests.get(url)
+    response.raise_for_status()  # Check if the request was successful
+    return response.content
+
+# URL of the gzipped pickle file
+model_url = 'https://github.com/hoybrett99/HeartDiseasePrediction/raw/main/Streanlit/heart_rf.pkl.gz'
+
+# Download the model
+model_content = download_model(model_url)
+
+# Load the model from the downloaded content
+with gzip.open(io.BytesIO(model_content), 'rb') as f:
+    rf = pickle.load(f)
 
 # Button to get prediction
 if st.sidebar.button("Get Prediction"):
