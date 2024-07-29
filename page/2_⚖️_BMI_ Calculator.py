@@ -10,7 +10,11 @@ def calculate_bmi(weight, height):
     """Calculate BMI given weight in kg and height in meters."""
     return weight / (height ** 2)
 
-st.set_page_config(page_title="BMI Calculator", layout="wide")
+st.set_page_config(
+    page_title="BMI Calculator",
+    page_icon="⚖️",
+)
+
 
 st.image("https://streamlit.io/images/brand/streamlit-mark-color.png", width=100)  # Adjust width as needed
 

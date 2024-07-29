@@ -1,5 +1,10 @@
 import streamlit as st
 
+st.set_page_config(
+    page_title="About",
+    page_icon="❔"
+)
+
 st.image("https://streamlit.io/images/brand/streamlit-mark-color.png", width=100)  # Adjust width as needed
 
 def about_section():

@@ -9,6 +9,10 @@ import gzip
 import requests
 import io
 
+st.set_page_config(
+    page_title="Heart Disease Predictor",
+    page_icon="🏥",
+)
 
 st.image("https://streamlit.io/images/brand/streamlit-mark-color.png", width=100)  # Adjust width as needed
 

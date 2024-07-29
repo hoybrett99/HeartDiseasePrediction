@@ -6,6 +6,10 @@ import numpy as np
 import streamlit as st
 from scipy import stats
 
+st.set_page_config(
+    page_title="Dashboard",
+    page_icon="📈",
+)
 
 # Load Data
 @st.cache_data
